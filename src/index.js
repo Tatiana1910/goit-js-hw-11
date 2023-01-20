@@ -90,10 +90,10 @@ function onLoadMore() {
     galleryMarkup(data.hits);
 
     if ((page - 1) * 40 + data.hits.length >= data.total) {
+      btnLoadMore.hidden = true;
       Notiflix.Notify.info(
         "We're sorry, but you've reached the end of search results."
       );
-      btnLoadMore.hidden = true;
     }
   });
 }
