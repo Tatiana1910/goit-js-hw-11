@@ -8,7 +8,6 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 const formEl = document.querySelector('.search-form');
 const galleryEl = document.querySelector('.gallery');
 const btnLoadMore = document.querySelector('.load-more');
-let gallerySimpleLightbox = new SimpleLightbox('.gallery a');
 
 let page = 1;
 let searchQuery;
@@ -21,7 +20,7 @@ function onSearch(e) {
   e.preventDefault();
   galleryEl.innerHTML = '';
 
-  searchQuery = formEl.children[0].value.trim();
+  let searchQuery = formEl.children[0].value.trim();
 
   if (searchQuery.length === 0) {
     return Notiflix.Notify.failure('Please, enter a query.');
