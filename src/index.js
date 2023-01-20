@@ -11,6 +11,7 @@ const btnLoadMore = document.querySelector('.load-more');
 let gallerySimpleLightbox = new SimpleLightbox('.gallery a');
 
 let page = 1;
+let searchQuery;
 
 formEl.addEventListener('submit', onSearch);
 btnLoadMore.addEventListener('click', onLoadMore);
@@ -26,7 +27,7 @@ function onSearch(e) {
     return Notiflix.Notify.failure('Please, enter a query.');
   }
 
-  fetchPhotos(searchQuery)
+  fetchPhotos(searchQuery, page)
     .then(data => {
       console.log(data);
       if (data.hits.length === 0) {
@@ -86,13 +87,14 @@ function onGalleryClick(evt) {
 function onLoadMore() {
   page += 1;
 
-  fetchPhotos(page).then(data => {
+  fetchPhotos(searchQuery, page).then(data => {
     galleryMarkup(data.hits);
-    if (data.hits.total === data.hits.totalHits) {
-      btnLoadMore.hidden = true;
+
+    if ((page - 1) * 40 + data.hits.length >= data.total) {
       Notiflix.Notify.info(
         "We're sorry, but you've reached the end of search results."
       );
+      btnLoadMore.hidden = true;
     }
   });
 }
