@@ -36,6 +36,7 @@ function onSearch(e) {
       } else {
         galleryMarkup(data.hits);
         Notiflix.Notify.success(`Hooray! We found ${data.totalHits} images.`);
+        btnLoadMore.hidden = false;
       }
     })
     .catch(err => console.log(err));
