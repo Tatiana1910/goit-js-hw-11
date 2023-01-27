@@ -86,7 +86,7 @@ function onGalleryClick(evt) {
 function onLoadMore() {
   page += 1;
 
-  fetchPhotos(page).then(data => {
+  fetchPhotos(searchQuery, page).then(data => {
     galleryMarkup(data.hits);
 
     if ((page - 1) * 40 + data.hits.length >= data.total) {
