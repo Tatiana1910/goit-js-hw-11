@@ -89,7 +89,7 @@ function onLoadMore() {
   fetchPhotos(searchQuery, page).then(data => {
     galleryMarkup(data.hits);
 
-    if (page * 40 + data.hits.length >= data.total) {
+    if ((page - 1) * 40 + data.hits.length >= data.total) {
       btnLoadMore.hidden = true;
       Notiflix.Notify.info(
         "We're sorry, but you've reached the end of search results."
