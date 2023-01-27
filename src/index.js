@@ -1,6 +1,6 @@
 import { fetchPhotos } from './fetchPhotos';
 
-import axios from 'axios';
+// import axios from 'axios';
 import Notiflix, { Loading } from 'notiflix';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
