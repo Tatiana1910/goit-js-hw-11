@@ -8,8 +8,8 @@ async function fetchPhotos(searchQuery, page = 1) {
   const response = await axios.get(
     `${BASE_URL}?key=${KEY}&q=${searchQuery}&image_type=photo&orientation =horizontal&safesearch =true&page=${page}&per_page=40`
   );
-  const data = response.json();
-  return data;
+
+  return response.json();
 }
 // fetchPhotos()
 //   .then(data => console.log(data))
