@@ -9,7 +9,7 @@ async function fetchPhotos(searchQuery, page = 1) {
     `${BASE_URL}?key=${KEY}&q=${searchQuery}&image_type=photo&orientation =horizontal&safesearch =true&page=${page}&per_page=40`
   );
 
-  return  response.json();
+  return response.json;
 }
 // fetchPhotos()
 //   .then(data => console.log(data))
