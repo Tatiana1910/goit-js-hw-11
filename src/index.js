@@ -11,6 +11,7 @@ const btnLoadMore = document.querySelector('.load-more');
 
 let page = 1;
 let searchQuery;
+let lightbox = new SimpleLightbox('.gallery a');
 
 formEl.addEventListener('submit', onSearch);
 btnLoadMore.addEventListener('click', onLoadMore);
@@ -20,7 +21,7 @@ function onSearch(e) {
   e.preventDefault();
   galleryEl.innerHTML = '';
 
-  let searchQuery = formEl.children[0].value.trim();
+  searchQuery = formEl.children[0].value.trim();
 
   if (searchQuery.length === 0) {
     return Notiflix.Notify.failure('Please, enter a query.');
@@ -74,13 +75,13 @@ function galleryMarkup(arr) {
     .join('');
 
   galleryEl.insertAdjacentHTML('beforeend', markup);
+
+  lightbox.refresh();
 }
 
 function onGalleryClick(evt) {
   evt.preventDefault();
-  const gallery = new SimpleLightbox('.gallery a', {
-    captionDelay: 250,
-  });
+  lightbox.open(e.currentTarget);
 }
 
 function onLoadMore() {
