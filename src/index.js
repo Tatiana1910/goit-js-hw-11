@@ -20,6 +20,7 @@ galleryEl.addEventListener('click', onGalleryClick);
 function onSearch(e) {
   e.preventDefault();
   galleryEl.innerHTML = '';
+  page = 1;
 
   searchQuery = formEl.children[0].value.trim();
 
